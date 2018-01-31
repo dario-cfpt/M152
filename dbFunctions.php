@@ -46,8 +46,8 @@ function UploadPost($comment, $typeMedia, $nameMedia, $datePost) {
         $sql = $db->prepare("INSERT INTO posts (commentaire, typeMedia, nomMedia, datePost) VALUES (:comment, :typeMedia, :nameMedia, :datePost)");
         $sql->bindParam(':comment', $comment, PDO::PARAM_STR);
         $sql->bindParam(':typeMedia', $typeMedia, PDO::PARAM_STR);
-        $sql->bindParam('nameMedia', $nameMedia, PDO::PARAM_STR);
-        $sql->bindParam('datePost,', $datePost, PDO::PARAM_STR);
+        $sql->bindParam(':nameMedia', $nameMedia, PDO::PARAM_STR);
+        $sql->bindParam(':datePost', $datePost, PDO::PARAM_STR);
         $sql->execute();
         return true;
     } catch (Exception $e) {
