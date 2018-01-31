@@ -32,6 +32,21 @@ function ConnectToDatabase() {
     return $dbc;
 }
 
+
+function GetPosts() {
+    try {
+        $dbc = ConnectToDatabase();
+        $sql = $dbc->prepare("SELECT * FROM posts");
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    catch (Exception $e) {
+        printf($e);
+        return null;
+    }
+}
+
 /**
  * Envoie les données d'un post à la base de données
  * @param $comment
@@ -42,8 +57,8 @@ function ConnectToDatabase() {
  */
 function UploadPost($comment, $typeMedia, $nameMedia, $datePost) {
     try {
-        $db = ConnectToDatabase();
-        $sql = $db->prepare("INSERT INTO posts (commentaire, typeMedia, nomMedia, datePost) VALUES (:comment, :typeMedia, :nameMedia, :datePost)");
+        $dbc = ConnectToDatabase();
+        $sql = $dbc->prepare("INSERT INTO posts (commentaire, typeMedia, nomMedia, datePost) VALUES (:comment, :typeMedia, :nameMedia, :datePost)");
         $sql->bindParam(':comment', $comment, PDO::PARAM_STR);
         $sql->bindParam(':typeMedia', $typeMedia, PDO::PARAM_STR);
         $sql->bindParam(':nameMedia', $nameMedia, PDO::PARAM_STR);

@@ -5,6 +5,8 @@
  * Date: 24.01.2018
  * Time: 13:52
  */
+require_once 'dbFunctions.php';
+$posts = GetPosts();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +22,18 @@
 <section>Bienvenue</section>
 <section>
     <img src="temp.png">
+    <?php
+    if (count($posts) > 0) {
+        foreach ($posts as $post) {
+            $src = $post['nomMedia'];
+            $comment = $post['commentaire'];
+            echo '<figure>
+                    <img src=' . "upload/$src" . ' />
+                    <figcaption>' . $comment .'</figcaption>
+                 </figure>';
+        }
+    }
+    ?>
 </section>
 </body>
 </html>

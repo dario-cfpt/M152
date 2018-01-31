@@ -4,12 +4,22 @@ require_once 'dbFunctions.php';
 if (isset($_FILES['img'])) {
     // Création d'un nouveau post
     $fileName = $_FILES['img']['name'];
+    $tmpName = $_FILES['img']['tmp_name'];
     $fileType = $_FILES['img']['type'];
     $comment = $_POST['comment'];
 
     $date = date("Y-m-d H:i:s");
 
-    UploadPost($comment, $fileType, $fileName, $date);
+    $success = UploadPost($comment, $fileType, $fileName, $date);
+
+    if($success){
+        move_uploaded_file($tmpName, "upload/$fileName");
+        header("location: index.php");
+        exit();
+    }
+    else {
+        echo 'An error has occurred';
+    }
 }
 
 ?>
