@@ -2,15 +2,19 @@
 require_once 'dbFunctions.php';
 
 if (isset($_FILES['img'])) {
-    // Création d'un nouveau post
-    $fileName = $_FILES['img']['name'];
-    $tmpName = $_FILES['img']['tmp_name'];
-    $fileType = $_FILES['img']['type'];
+    // Création d'un nouveau posty
+    $length = count($_FILES['img']['name']);
+
     $comment = $_POST['comment'];
-
     $date = date("Y-m-d H:i:s");
+    $idPost = UploadPost($comment, $date);
 
-    $success = UploadPost($comment, $fileType, $fileName, $date);
+    for ($i = 0; $i < $length ; $i++)
+    {
+        $fileName = $_FILES['img']['name'][$i];
+        $fileType = $_FILES['img']['type'][$i];
+        UploadMedia($fileName, $fileType, $idPost);
+    }
 
     if($success){
         move_uploaded_file($tmpName, "upload/$fileName");
@@ -31,14 +35,14 @@ if (isset($_FILES['img'])) {
 </head>
 <body>
 <nav>
-    <a href="./index.html">Accueil</a> |
-    <a href="./post.html">Edition</a> |
+    <a href="./index.php">Accueil</a> |
+    <a href="./post.php">Edition</a> |
 </nav>
 <section>
     <form method="post" action="./post.php" enctype="multipart/form-data">
         <table>
             <tr>
-                <td>Choisir une image : <input type="file" name="img"></td>
+                <td>Choisir une image : <input type="file" name="img[]" multiple></td>
             </tr>
             <tr>
                 <td>Commentaire : <textarea name="comment"></textarea>

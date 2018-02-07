@@ -16,7 +16,7 @@ $posts = GetPosts();
 </head>
 <body>
 <nav>
-    <a href="./index.html">Accueil</a> |
+    <a href="./index.php">Accueil</a> |
     <a href="post.php">Post</a>
 </nav>
 <section>Bienvenue</section>

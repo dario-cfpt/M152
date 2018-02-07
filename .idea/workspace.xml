@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d675ba2-28ca-42bc-a9a3-4ac8b3bd4739" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbFunctions.php" afterPath="$PROJECT_DIR$/dbFunctions.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysql.inc.php" afterPath="$PROJECT_DIR$/mysql.inc.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/post.php" afterPath="$PROJECT_DIR$/post.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,27 +25,30 @@
     <expand />
     <select />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="M152" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+            <state relative-caret-position="306">
+              <caret line="18" column="15" lean-forward="false" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
               <folding>
-                <marker date="1517408648377" expanded="true" signature="589:676" ph="..." />
-                <marker date="1517408648377" expanded="true" signature="589:677" ph="..." />
-                <marker date="1517408648377" expanded="true" signature="589:731" ph="..." />
+                <marker date="1518005795369" expanded="true" signature="588:675" ph="..." />
+                <marker date="1518005795369" expanded="true" signature="588:676" ph="..." />
+                <marker date="1518005795369" expanded="true" signature="588:730" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="post.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="post.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/post.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+            <state relative-caret-position="272">
+              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -54,10 +57,12 @@
       <file leaf-file-name="dbFunctions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbFunctions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="53" column="20" lean-forward="true" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
+            <state relative-caret-position="378">
+              <caret line="65" column="42" lean-forward="false" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
               <folding>
-                <marker date="1517409630003" expanded="true" signature="775:794" ph="SELECT * FRO... posts" />
+                <marker date="1518015375953" expanded="true" signature="853:892" ph="SELECT nomMe... posts" />
+                <marker date="1518015375953" expanded="true" signature="1332:1427" ph="INSERT INTO posts... " />
+                <marker date="1518015375953" expanded="true" signature="1986:2056" ph="INSERT INTO media... " />
               </folding>
             </state>
           </provider>
@@ -81,10 +86,10 @@
         <option value="$PROJECT_DIR$/edit.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/post.html" />
-        <option value="$PROJECT_DIR$/post.php" />
         <option value="$PROJECT_DIR$/mysql.inc.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/dbFunctions.php" />
+        <option value="$PROJECT_DIR$/post.php" />
       </list>
     </option>
   </component>
@@ -123,7 +128,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -136,6 +140,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -175,33 +180,35 @@
       <workItem from="1516805318541" duration="1177000" />
       <workItem from="1516977742752" duration="12000" />
       <workItem from="1516978188158" duration="750000" />
-      <workItem from="1517400057427" duration="10148000" />
+      <workItem from="1517400057427" duration="10255000" />
+      <workItem from="1518005739640" duration="8177000" />
+      <workItem from="1518015030515" duration="766000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19349000" />
+    <option name="totallyTimeSpent" value="28399000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11369193" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12286063" sideWeight="0.49462366" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.502445" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921347" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26853934" sideWeight="0.49755502" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.118581906" sideWeight="0.50537634" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44044945" sideWeight="0.49755502" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921347" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -213,19 +220,76 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="18" />
+      <option name="time" value="38" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="306">
+          <caret line="18" column="15" lean-forward="false" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+          <folding>
+            <marker date="1518005795369" expanded="true" signature="588:675" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:676" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:730" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbFunctions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding>
+            <marker date="1518015375953" expanded="true" signature="853:892" ph="SELECT nomMe... posts" />
+            <marker date="1518015375953" expanded="true" signature="1332:1427" ph="INSERT INTO posts... " />
+            <marker date="1518015375953" expanded="true" signature="1986:2056" ph="INSERT INTO media... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/post.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1518005795369" expanded="true" signature="588:675" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:676" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:730" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/post.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbFunctions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="53" column="20" lean-forward="true" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
+          <folding>
+            <marker date="1518015375953" expanded="true" signature="853:892" ph="SELECT nomMe... posts" />
+            <marker date="1518015375953" expanded="true" signature="1332:1427" ph="INSERT INTO posts... " />
+            <marker date="1518015375953" expanded="true" signature="1986:2056" ph="INSERT INTO media... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html" />
     <entry file="file://$PROJECT_DIR$/post.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -239,9 +303,9 @@
         <state relative-caret-position="51">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <marker date="1517408648377" expanded="true" signature="589:676" ph="..." />
-            <marker date="1517408648377" expanded="true" signature="589:677" ph="..." />
-            <marker date="1517408648377" expanded="true" signature="589:731" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:675" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:676" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:730" ph="..." />
           </folding>
         </state>
       </provider>
@@ -251,7 +315,9 @@
         <state relative-caret-position="680">
           <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="50" selection-end-column="24" />
           <folding>
-            <marker date="1517409630003" expanded="true" signature="775:794" ph="SELECT * FRO... posts" />
+            <marker date="1518015375953" expanded="true" signature="853:892" ph="SELECT nomMe... posts" />
+            <marker date="1518015375953" expanded="true" signature="1332:1427" ph="INSERT INTO posts... " />
+            <marker date="1518015375953" expanded="true" signature="1986:2056" ph="INSERT INTO media... " />
           </folding>
         </state>
       </provider>
@@ -264,14 +330,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="14" lean-forward="false" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html" />
     <entry file="file://$PROJECT_DIR$/post.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -285,9 +344,9 @@
         <state relative-caret-position="51">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <marker date="1517408648377" expanded="true" signature="589:676" ph="..." />
-            <marker date="1517408648377" expanded="true" signature="589:677" ph="..." />
-            <marker date="1517408648377" expanded="true" signature="589:731" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:675" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:676" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:730" ph="..." />
           </folding>
         </state>
       </provider>
@@ -305,19 +364,14 @@
         <state relative-caret-position="221">
           <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
           <folding>
-            <marker date="1517409630003" expanded="true" signature="775:794" ph="SELECT * FRO... posts" />
+            <marker date="1518015375953" expanded="true" signature="853:892" ph="SELECT nomMe... posts" />
+            <marker date="1518015375953" expanded="true" signature="1332:1427" ph="INSERT INTO posts... " />
+            <marker date="1518015375953" expanded="true" signature="1986:2056" ph="INSERT INTO media... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="14" lean-forward="false" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html" />
     <entry file="file://$PROJECT_DIR$/post.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -331,9 +385,9 @@
         <state relative-caret-position="51">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <marker date="1517408648377" expanded="true" signature="589:676" ph="..." />
-            <marker date="1517408648377" expanded="true" signature="589:677" ph="..." />
-            <marker date="1517408648377" expanded="true" signature="589:731" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:675" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:676" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:730" ph="..." />
           </folding>
         </state>
       </provider>
@@ -351,19 +405,14 @@
         <state relative-caret-position="221">
           <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
           <folding>
-            <marker date="1517409630003" expanded="true" signature="775:794" ph="SELECT * FRO... posts" />
+            <marker date="1518015375953" expanded="true" signature="853:892" ph="SELECT nomMe... posts" />
+            <marker date="1518015375953" expanded="true" signature="1332:1427" ph="INSERT INTO posts... " />
+            <marker date="1518015375953" expanded="true" signature="1986:2056" ph="INSERT INTO media... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="14" lean-forward="false" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html" />
     <entry file="file://$PROJECT_DIR$/post.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -377,9 +426,9 @@
         <state relative-caret-position="187">
           <caret line="16" column="50" lean-forward="true" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
           <folding>
-            <marker date="1517408648377" expanded="true" signature="589:676" ph="..." />
-            <marker date="1517408648377" expanded="true" signature="589:677" ph="..." />
-            <marker date="1517408648377" expanded="true" signature="589:731" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:675" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:676" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:730" ph="..." />
           </folding>
         </state>
       </provider>
@@ -397,7 +446,9 @@
         <state relative-caret-position="289">
           <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="24" />
           <folding>
-            <marker date="1517409630003" expanded="true" signature="775:794" ph="SELECT * FRO... posts" />
+            <marker date="1518015375953" expanded="true" signature="853:892" ph="SELECT nomMe... posts" />
+            <marker date="1518015375953" expanded="true" signature="1332:1427" ph="INSERT INTO posts... " />
+            <marker date="1518015375953" expanded="true" signature="1986:2056" ph="INSERT INTO media... " />
           </folding>
         </state>
       </provider>
@@ -445,24 +496,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../M150/Performance_TP/index.php" />
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html" />
     <entry file="file://$USER_HOME$/Desktop/Informatique 2017-2018/web/M183 - Securite/Forum_ronaldo/myFunctions.inc.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="828">
           <caret line="82" column="3" lean-forward="true" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="3" />
-          <folding>
-            <marker date="1515758565189" expanded="true" signature="1077:1179" ph="INSERT INTO USERS... " />
-            <marker date="1515758565189" expanded="true" signature="1773:1838" ph="SELECT idUse... USERS" />
-            <marker date="1515758565189" expanded="true" signature="2323:2366" ph="SELECT salt USERS" />
-            <marker date="1515758565189" expanded="true" signature="2779:2831" ph="SELECT name,... USERS" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -470,15 +508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/post.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -490,25 +519,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbFunctions.php">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="53" column="20" lean-forward="true" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
+        <state relative-caret-position="306">
+          <caret line="18" column="15" lean-forward="false" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
           <folding>
-            <marker date="1517409630003" expanded="true" signature="775:794" ph="SELECT * FRO... posts" />
+            <marker date="1518005795369" expanded="true" signature="588:675" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:676" ph="..." />
+            <marker date="1518005795369" expanded="true" signature="588:730" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/dbFunctions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+        <state relative-caret-position="378">
+          <caret line="65" column="42" lean-forward="false" selection-start-line="65" selection-start-column="42" selection-end-line="65" selection-end-column="42" />
           <folding>
-            <marker date="1517408648377" expanded="true" signature="589:676" ph="..." />
-            <marker date="1517408648377" expanded="true" signature="589:677" ph="..." />
-            <marker date="1517408648377" expanded="true" signature="589:731" ph="..." />
+            <marker date="1518015375953" expanded="true" signature="853:892" ph="SELECT nomMe... posts" />
+            <marker date="1518015375953" expanded="true" signature="1332:1427" ph="INSERT INTO posts... " />
+            <marker date="1518015375953" expanded="true" signature="1986:2056" ph="INSERT INTO media... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/post.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
