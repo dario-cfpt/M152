@@ -1,23 +1,27 @@
 <?php
-require_once 'dbFunctions.php';
+include_once '../Controller/dbFunctions.php';
+$dbFunctions = new DbFunctions();
 
 if (isset($_FILES['img'])) {
-    // Création d'un nouveau posty
+    $success = false;
+
+    // Création d'un nouveau post
     $length = count($_FILES['img']['name']);
 
     $comment = $_POST['comment'];
     $date = date("Y-m-d H:i:s");
-    $idPost = UploadPost($comment, $date);
+    $idPost = $dbFunctions->UploadPost($comment, $date);
 
     for ($i = 0; $i < $length ; $i++)
     {
         $fileName = $_FILES['img']['name'][$i];
         $fileType = $_FILES['img']['type'][$i];
-        UploadMedia($fileName, $fileType, $idPost);
+        $fileTmpName = $_FILES['img']['tmp_name'][$i];
+        $success = $dbFunctions->UploadMedia($fileName, $fileType, $idPost);
+        move_uploaded_file($fileTmpName, "upload/$fileName");
     }
 
     if($success){
-        move_uploaded_file($tmpName, "upload/$fileName");
         header("location: index.php");
         exit();
     }
@@ -35,14 +39,14 @@ if (isset($_FILES['img'])) {
 </head>
 <body>
 <nav>
-    <a href="./index.php">Accueil</a> |
-    <a href="./post.php">Edition</a> |
+    <a href="index.php">Accueil</a> |
+    <a href="post.php">Edition</a> |
 </nav>
 <section>
-    <form method="post" action="./post.php" enctype="multipart/form-data">
+    <form method="post" action="post.php" enctype="multipart/form-data">
         <table>
             <tr>
-                <td>Choisir une image : <input type="file" name="img[]" multiple></td>
+                <td>Choisir une image : <input type="file" name="img[]" accept="image/*" multiple></td>
             </tr>
             <tr>
                 <td>Commentaire : <textarea name="comment"></textarea>
