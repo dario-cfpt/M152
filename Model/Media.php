@@ -10,12 +10,14 @@ class Media
 {
     private $IdMedia;
     private $Name;
+    private $TypeMedia;
     private $IdPost;
 
-    public function __construct($idMedia, $name, $idPost)
+    public function __construct($idMedia, $name, $typeMedia, $idPost)
     {
         $this->SetIdMedia($idMedia);
         $this->SetName($name);
+        $this->TypeMedia($typeMedia);
         $this->SetIdPost($idPost);
     }
 
@@ -31,6 +33,13 @@ class Media
     }
     private function SetName($name) {
         $this->Name = $name;
+    }
+
+    public function GetTypeMedia() {
+        return $this->TypeMedia;
+    }
+    private function SetTypeMedia($typeMedia) {
+        $this->TypeMedia = $typeMedia;
     }
 
     public function GetIdPost() {

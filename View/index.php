@@ -31,7 +31,27 @@ $posts = $dbFunctions->GetPosts();
             echo '<figure>';
             foreach ($mediaArray as $media) {
                 $src = $media->GetName();
-                echo '<img src=' . "../upload/$src" . ' />';
+                $typeMedia = $media->GetTypeMedia();
+                $directory = "";
+                switch ($typeMedia) {
+                    case "image/jpeg":
+                        $directory = "images";
+                        break;
+                    case "video/mp4":
+                        $directory = "videos";
+                        break;
+                    default:
+                        break;
+                }
+                $src = "../upload/$directory/$src";
+
+                if ($directory == "images") {
+                    echo '<img src=' . $src . ' />';
+                }
+                else {
+                    echo '<video src='. $src . ' />';
+                }
+
             }
             echo '<figcaption>' . $comment .'</figcaption></figure>';
         }

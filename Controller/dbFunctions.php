@@ -66,13 +66,13 @@ class DbFunctions {
         $media = null;
         try {
             $dbc = $this->ConnectToDatabase();
-            $sql = $dbc->prepare("SELECT idMedia, nomFichierMedia, idPost FROM media WHERE idPost = :idPost");
+            $sql = $dbc->prepare("SELECT idMedia, nomFichierMedia, typeMedia, idPost FROM media WHERE idPost = :idPost");
             $sql->bindParam(':idPost', $idPost, PDO::PARAM_STR);
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
             $media = array();
             foreach ($result as $item) {
-                array_push($media, new Media($item['idMedia'], $item['nomFichierMedia'], $item['idPost']));
+                array_push($media, new Media($item['idMedia'], $item['nomFichierMedia'], $item['typeMedia'] ,$item['idPost']));
             }
         }
         catch (Exception $e) {
