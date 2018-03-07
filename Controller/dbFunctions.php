@@ -7,6 +7,8 @@
  */
 include_once 'mysql.inc.php';
 include_once 'pdoController.php';
+include_once '../Model/Media.php';
+include_once '../Model/Post.php';
 
 class DbFunctions {
     /**
@@ -38,17 +40,21 @@ class DbFunctions {
      * @return array|null
      */
     public function GetPosts() {
+        $post = null;
         try {
             $dbc = $this->ConnectToDatabase();
-            $sql = $dbc->prepare("SELECT idPost, commentaire FROM posts");
+            $sql = $dbc->prepare("SELECT idPost, commentaire, datePost FROM posts");
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
+            $post = array();
+            foreach ($result as $item) {
+                array_push($post, new Post($item['idPost'], $item['commentaire'], $item['datePost']));
+            }
         }
         catch (Exception $e) {
             printf($e);
-            return null;
         }
+        return $post;
     }
 
     /**
@@ -57,18 +63,22 @@ class DbFunctions {
      * @return array|null
      */
     public function GetMediaFromIdPost($idPost) {
+        $media = null;
         try {
             $dbc = $this->ConnectToDatabase();
-            $sql = $dbc->prepare("SELECT nomFichierMedia, idPost FROM media WHERE idPost = :idPost");
+            $sql = $dbc->prepare("SELECT idMedia, nomFichierMedia, idPost FROM media WHERE idPost = :idPost");
             $sql->bindParam(':idPost', $idPost, PDO::PARAM_STR);
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
+            $media = array();
+            foreach ($result as $item) {
+                array_push($media, new Media($item['idMedia'], $item['nomFichierMedia'], $item['idPost']));
+            }
         }
         catch (Exception $e) {
             printf($e);
-            return null;
         }
+        return $media;
     }
 
     /**

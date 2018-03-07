@@ -26,11 +26,11 @@ $posts = $dbFunctions->GetPosts();
     <?php
     if (count($posts) > 0) {
         foreach ($posts as $post) {
-            $mediaArray = $dbFunctions->GetMediaFromIdPost($post['idPost']);
-            $comment = $post['commentaire'];
+            $mediaArray = $dbFunctions->GetMediaFromIdPost($post->GetIdPost());
+            $comment = $post->GetComment();
             echo '<figure>';
             foreach ($mediaArray as $media) {
-                $src = $media['nomFichierMedia'];
+                $src = $media->GetName();
                 echo '<img src=' . "../upload/$src" . ' />';
             }
             echo '<figcaption>' . $comment .'</figcaption></figure>';

@@ -15,8 +15,8 @@ class Media
     public function __construct($idMedia, $name, $idPost)
     {
         $this->SetIdMedia($idMedia);
-        $this->SetIdMedia($name);
-        $this->SetIdMedia($idPost);
+        $this->SetName($name);
+        $this->SetIdPost($idPost);
     }
 
     public function GetIdMedia() {
@@ -30,13 +30,13 @@ class Media
         return $this->Name;
     }
     private function SetName($name) {
-        $this->IdMedia = $name;
+        $this->Name = $name;
     }
 
     public function GetIdPost() {
         return $this->IdPost;
     }
     private function SetIdPost($id) {
-        $this->IdMedia = $id;
+        $this->IdPost = $id;
     }
 }
