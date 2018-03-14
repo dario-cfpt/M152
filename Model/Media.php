@@ -17,7 +17,7 @@ class Media
     {
         $this->SetIdMedia($idMedia);
         $this->SetName($name);
-        $this->TypeMedia($typeMedia);
+        $this->SetTypeMedia($typeMedia);
         $this->SetIdPost($idPost);
     }
 

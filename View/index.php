@@ -38,7 +38,14 @@ $posts = $dbFunctions->GetPosts();
                         $directory = "images";
                         break;
                     case "video/mp4":
+                    case "video/webm":
+                    case "video/ogg":
                         $directory = "videos";
+                        break;
+                    case "audio/mpeg":
+                    case "audio/ogg":
+                    case "audio/wav":
+                        $directory = "audios";
                         break;
                     default:
                         break;
@@ -47,13 +54,17 @@ $posts = $dbFunctions->GetPosts();
 
                 if ($directory == "images") {
                     echo '<img src=' . $src . ' />';
+                    echo '<figcaption>' . $comment .'</figcaption></figure>';
+                }
+                else if ($directory == "audios") {
+                    echo '<video controls autoplay loop> <source src="'. $src . '" type="' . $typeMedia . '">';
                 }
                 else {
-                    echo '<video src='. $src . ' />';
+                    echo '<audio controls> <source src="'. $src . '" type="' . $typeMedia . '">';
                 }
 
             }
-            echo '<figcaption>' . $comment .'</figcaption></figure>';
+
         }
     }
     ?>
