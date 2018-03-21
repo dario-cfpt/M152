@@ -11,6 +11,23 @@ include_once '../Model/Media.php';
 include_once '../Model/Post.php';
 
 class DbFunctions {
+
+    private $supportedFiles = array(
+        "image/jpeg",
+        "image/gif",
+        "video/mp4",
+        "video/webm",
+        "video/ogg",
+        "audio/mpeg",
+        "audio/ogg",
+        "audio/wav",
+        "audio/mp3",
+    );
+
+    const DIRECTORY_IMAGES = "images";
+    const DIRECTORY_VIDEOS = "videos";
+    const DIRECTORY_AUDIOS = "audios";
+
     /**
      * Établie la connection à la base de données
      * @return null|PDO
@@ -32,6 +49,12 @@ class DbFunctions {
             }
         }
         return $dbc;
+    }
+
+    public function BeginTransaction() {
+        $dbc = $this->ConnectToDatabase();
+        $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $dbc->beginTransaction();
     }
 
 
@@ -82,43 +105,70 @@ class DbFunctions {
     }
 
     /**
-     * Envoie les données d'un media à la base de données
-     * @param $nameMedia
-     * @param $typeMedia
-     * @param $idPost
-     * @return bool
-     */
-    public function UploadMedia($nameMedia, $typeMedia, $idPost) {
-        try {
-            $dbc = $this->ConnectToDatabase();
-            $sql = $dbc->prepare("INSERT INTO media (nomFichierMedia, typeMedia, idPost) VALUES (:nameMedia, :typeMedia, :idPost)");
-            $sql->bindParam(':nameMedia', $nameMedia, PDO::PARAM_STR);
-            $sql->bindParam(':typeMedia', $typeMedia, PDO::PARAM_STR);
-            $sql->bindParam(':idPost', $idPost, PDO::PARAM_STR);
-            $sql->execute();
-            return true;
-        } catch (Exception $e) {
-            printf($e);
-            return false;
-        }
-    }
-
-    /**
-     * Envoie les données d'un post à la base de données
+     * Envoie les données d'un post et les medias associés à la base de données
      * @param $comment
      * @param $datePost
+     * @param $fileMediaArray
+     * @param $typeMedia -
      * @return bool
      */
-    public function UploadPost($comment, $datePost) {
+    public function UploadPostWithMedia($comment, $datePost, $fileMediaArray) {
+        $dbc = $this->ConnectToDatabase();
         try {
-            $dbc = $this->ConnectToDatabase();
+            $dbc->beginTransaction();
             $sql = $dbc->prepare("INSERT INTO posts (commentaire, datePost) VALUES (:comment, :datePost)");
             $sql->bindParam(':comment', $comment, PDO::PARAM_STR);
             $sql->bindParam(':datePost', $datePost, PDO::PARAM_STR);
             $sql->execute();
-            return $dbc->lastInsertId();
+            $idPost = $dbc->lastInsertId();
+
+            $length = count($fileMediaArray['name']);
+            for ($i = 0; $i < $length; $i++) {
+                $fileName = $fileMediaArray['name'][$i];
+                $fileName = uniqid() . $idPost . '.' . explode('.', $fileName)[count($fileName - 1)];
+                $fileType = $fileMediaArray['type'][$i];
+                $fileTmpName = $fileMediaArray['tmp_name'][$i];
+
+                if(array_search($fileType, $this->supportedFiles)) {
+                    $sql = $dbc->prepare("INSERT INTO media (nomFichierMedia, typeMedia, idPost) VALUES (:nameMedia, :typeMedia, :idPost)");
+                    $sql->bindParam(':nameMedia', $fileName, PDO::PARAM_STR);
+                    $sql->bindParam(':typeMedia', $fileType, PDO::PARAM_STR);
+                    $sql->bindParam(':idPost', $idPost, PDO::PARAM_STR);
+                    $sql->execute();
+
+                    switch ($fileType) {
+                        case "image/jpeg":
+                        case "image/gif":
+                            $typeMedia = self::DIRECTORY_IMAGES;
+                            break;
+                        case "video/mp4":
+                        case "video/webm":
+                        case "video/ogg":
+                            $typeMedia = self::DIRECTORY_VIDEOS;
+                            break;
+                        case "audio/mpeg":
+                        case "audio/ogg":
+                        case "audio/wav":
+                        case "audio/mp3":
+                            $typeMedia = self::DIRECTORY_AUDIOS;
+                            break;
+                        default:
+                            throw new Exception("Unsupported file");
+                            break;
+                    }
+                    move_uploaded_file($fileTmpName, "../upload/$typeMedia/$fileName");
+                }
+                else {
+                    throw new Exception("Unsupported file");
+                }
+            }
+
+            $dbc->commit();
+            return true;
+
         } catch (Exception $e) {
             printf($e);
+            $dbc->rollBack();
             return false;
         }
     }

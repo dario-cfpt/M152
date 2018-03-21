@@ -8,7 +8,7 @@
 
 abstract class pdoController {
 
-    private static $pdoInstance;
+    private static $pdoInstance ;
 
     /**
      * Get an unique instance for pdo

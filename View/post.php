@@ -4,22 +4,13 @@ $dbFunctions = new DbFunctions();
 
 if (isset($_FILES['media'])) {
     $success = false;
-    $typeMedia = $_POST['typeMedia'];
 
     // Création d'un nouveau post
     $length = count($_FILES['media']['name']);
 
     $comment = $_POST['comment'];
     $date = date("Y-m-d H:i:s");
-    $idPost = $dbFunctions->UploadPost($comment, $date);
-
-    for ($i = 0; $i < $length; $i++) {
-        $fileName = $_FILES['media']['name'][$i];
-        $fileType = $_FILES['media']['type'][$i];
-        $fileTmpName = $_FILES['media']['tmp_name'][$i];
-        $success = $dbFunctions->UploadMedia($fileName, $fileType, $idPost);
-        move_uploaded_file($fileTmpName, "../upload/$typeMedia/$fileName");
-    }
+    $success = $dbFunctions->UploadPostWithMedia($comment, $date, $_FILES['media']);
 
     if ($success) {
         header("location: index.php");
@@ -76,6 +67,23 @@ if (isset($_FILES['media'])) {
                 </tr>
             </table>
             <input type="hidden" name="typeMedia" value="videos">
+        </fieldset>
+    </form>
+    <form method="post" action="post.php" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Audio</legend>
+            <table>
+                <tr>
+                    <td>Choisir un fichier audio : <input type="file" name="media[]" accept="audio/*" multiple></td>
+                </tr>
+                <tr>
+                    <td>Commentaire : <textarea name="comment"></textarea>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Envoyer" name="submit"></td>
+                </tr>
+            </table>
+            <input type="hidden" name="typeMedia" value="audios">
         </fieldset>
     </form>
 </section>

@@ -25,6 +25,7 @@ $posts = $dbFunctions->GetPosts();
     <img src="../temp.png">
     <?php
     if (count($posts) > 0) {
+        $indexMediaArray = 0;
         foreach ($posts as $post) {
             $mediaArray = $dbFunctions->GetMediaFromIdPost($post->GetIdPost());
             $comment = $post->GetComment();
@@ -35,34 +36,43 @@ $posts = $dbFunctions->GetPosts();
                 $directory = "";
                 switch ($typeMedia) {
                     case "image/jpeg":
-                        $directory = "images";
+                    case "image/gif":
+                        $directory = $dbFunctions::DIRECTORY_IMAGES;
                         break;
                     case "video/mp4":
                     case "video/webm":
                     case "video/ogg":
-                        $directory = "videos";
+                        $directory = $dbFunctions::DIRECTORY_VIDEOS;
                         break;
                     case "audio/mpeg":
                     case "audio/ogg":
                     case "audio/wav":
-                        $directory = "audios";
+                    case "audio/mp3":
+                        $directory = $dbFunctions::DIRECTORY_AUDIOS;
                         break;
                     default:
                         break;
                 }
                 $src = "../upload/$directory/$src";
 
-                if ($directory == "images") {
+                if ($directory == $dbFunctions::DIRECTORY_IMAGES) {
                     echo '<img src=' . $src . ' />';
-                    echo '<figcaption>' . $comment .'</figcaption></figure>';
                 }
-                else if ($directory == "audios") {
-                    echo '<video controls autoplay loop> <source src="'. $src . '" type="' . $typeMedia . '">';
+                else if ($directory == $dbFunctions::DIRECTORY_VIDEOS) {
+                    echo '<video controls autoplay loop> <source src="'. $src . '" type="' . $typeMedia . '"></video>';
                 }
-                else {
-                    echo '<audio controls> <source src="'. $src . '" type="' . $typeMedia . '">';
+                else if ($directory == $dbFunctions::DIRECTORY_AUDIOS) {
+                    echo '<audio controls> <source src="'. $src . '" type="' . $typeMedia . '"></audio>';
                 }
 
+                // Add the comment of the post if all media were displayed
+                if ($indexMediaArray == count($mediaArray) - 1) {
+                    echo '<figcaption>' . $comment .'</figcaption></figure>';
+                    $indexMediaArray = 0;
+                }
+                else {
+                    $indexMediaArray++;
+                }
             }
 
         }
