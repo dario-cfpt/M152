@@ -5,13 +5,11 @@
  * Date: 24.01.2018
  * Time: 14:47
  */
-include_once 'mysql.inc.php';
 include_once 'pdoController.php';
 include_once '../Model/Media.php';
 include_once '../Model/Post.php';
 
 class DbFunctions {
-
     private $supportedFiles = array(
         "image/jpeg",
         "image/gif",
@@ -29,43 +27,13 @@ class DbFunctions {
     const DIRECTORY_AUDIOS = "audios";
 
     /**
-     * Établie la connection à la base de données
-     * @return null|PDO
-     */
-    private function ConnectToDatabase() {
-        $dbc = null;
-
-        if ($dbc == null) {
-            try {
-                $dbc = pdoController::GetInstance(
-                    MySqlC::DB_HOST,
-                    MySqlC::DB_NAME,
-                    MySqlC::DB_USER,
-                    MySqlC::DB_PASSWORD
-                );
-            }
-            catch (Exception $e) {
-                exit('Could not connect to MySQL');
-            }
-        }
-        return $dbc;
-    }
-
-    public function BeginTransaction() {
-        $dbc = $this->ConnectToDatabase();
-        $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $dbc->beginTransaction();
-    }
-
-
-    /**
      * Récupère le nom d'un post et son commentaire
      * @return array|null
      */
     public function GetPosts() {
         $post = null;
         try {
-            $dbc = $this->ConnectToDatabase();
+            $dbc = pdoController::GetInstance();
             $sql = $dbc->prepare("SELECT idPost, commentaire, datePost FROM posts");
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -88,7 +56,7 @@ class DbFunctions {
     public function GetMediaFromIdPost($idPost) {
         $media = null;
         try {
-            $dbc = $this->ConnectToDatabase();
+            $dbc = pdoController::GetInstance();
             $sql = $dbc->prepare("SELECT idMedia, nomFichierMedia, typeMedia, idPost FROM media WHERE idPost = :idPost");
             $sql->bindParam(':idPost', $idPost, PDO::PARAM_STR);
             $sql->execute();
@@ -105,37 +73,60 @@ class DbFunctions {
     }
 
     /**
-     * Envoie les données d'un post et les medias associés à la base de données
+     * Ajoute un post (commentaire + date) dans la base de données
      * @param $comment
      * @param $datePost
-     * @param $fileMediaArray
-     * @param $typeMedia -
-     * @return bool
+     * @return string
+     * @throws Exception
      */
-    public function UploadPostWithMedia($comment, $datePost, $fileMediaArray) {
-        $dbc = $this->ConnectToDatabase();
+    private function UploadPost($comment, $datePost) {
         try {
-            $dbc->beginTransaction();
+            $dbc = pdoController::GetInstance();
             $sql = $dbc->prepare("INSERT INTO posts (commentaire, datePost) VALUES (:comment, :datePost)");
             $sql->bindParam(':comment', $comment, PDO::PARAM_STR);
             $sql->bindParam(':datePost', $datePost, PDO::PARAM_STR);
             $sql->execute();
             $idPost = $dbc->lastInsertId();
+            return $idPost;
+        } catch (Exception $e) {
+            throw new Exception("Error with the upload of the post");
+        }
+    }
+
+    private function UploadMedia($fileName, $fileType, $idPost) {
+        try {
+            $dbc = pdoController::GetInstance();
+            $sql = $dbc->prepare("INSERT INTO media (nomFichierMedia, typeMedia, idPost) VALUES (:nameMedia, :typeMedia, :idPost)");
+            $sql->bindParam(':nameMedia', $fileName, PDO::PARAM_STR);
+            $sql->bindParam(':typeMedia', $fileType, PDO::PARAM_STR);
+            $sql->bindParam(':idPost', $idPost, PDO::PARAM_STR);
+            $sql->execute();
+        } catch (Exception $e) {
+            throw new Exception("Error with the upload of the media");
+        }
+    }
+
+    /**
+     * Envoie les données d'un post et les medias associés à la base de données
+     * @param $comment
+     * @param $datePost
+     * @param $fileMediaArray
+     * @return bool
+     */
+    public function UploadPostWithMedia($comment, $datePost, $fileMediaArray) {
+        try {
+            $dbc = pdoController::GetInstance();
+            $dbc->beginTransaction();
+            $idPost = $this->UploadPost($comment, $datePost);
 
             $length = count($fileMediaArray['name']);
             for ($i = 0; $i < $length; $i++) {
                 $fileName = $fileMediaArray['name'][$i];
-                $fileName = uniqid() . $idPost . '.' . explode('.', $fileName)[count($fileName - 1)];
+                $fileName = uniqid()  . $idPost . '.' . explode('.', $fileName)[count($fileName - 1)];
                 $fileType = $fileMediaArray['type'][$i];
                 $fileTmpName = $fileMediaArray['tmp_name'][$i];
 
                 if(array_search($fileType, $this->supportedFiles)) {
-                    $sql = $dbc->prepare("INSERT INTO media (nomFichierMedia, typeMedia, idPost) VALUES (:nameMedia, :typeMedia, :idPost)");
-                    $sql->bindParam(':nameMedia', $fileName, PDO::PARAM_STR);
-                    $sql->bindParam(':typeMedia', $fileType, PDO::PARAM_STR);
-                    $sql->bindParam(':idPost', $idPost, PDO::PARAM_STR);
-                    $sql->execute();
-
                     switch ($fileType) {
                         case "image/jpeg":
                         case "image/gif":
@@ -156,7 +147,12 @@ class DbFunctions {
                             throw new Exception("Unsupported file");
                             break;
                     }
-                    move_uploaded_file($fileTmpName, "../upload/$typeMedia/$fileName");
+                    $this->UploadMedia($fileName, $fileType, $idPost);
+                    $fileMovedSuccessfully = move_uploaded_file($fileTmpName, "../upload/$typeMedia/$fileName");
+
+                    if (!$fileMovedSuccessfully) {
+                        throw new Exception("An error has occurend when moving the file to the repository");
+                    }
                 }
                 else {
                     throw new Exception("Unsupported file");

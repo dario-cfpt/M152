@@ -8,6 +8,10 @@
 include_once '../Controller/dbFunctions.php';
 $dbFunctions = new DbFunctions();
 $posts = $dbFunctions->GetPosts();
+
+if (isset($_POST['idPost'])) {
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,19 +69,32 @@ $posts = $dbFunctions->GetPosts();
                     echo '<audio controls> <source src="'. $src . '" type="' . $typeMedia . '"></audio>';
                 }
 
-                // Add the comment of the post if all media were displayed
+                // Add the comment of the post if all media are displayed
                 if ($indexMediaArray == count($mediaArray) - 1) {
-                    echo '<figcaption>' . $comment .'</figcaption></figure>';
+                    echo '<figcaption>' . $comment .'</figcaption><button class="deletePost"  name="'. $media->GetIdPost() . '");">Supprimer</button></figure>';
                     $indexMediaArray = 0;
                 }
                 else {
                     $indexMediaArray++;
                 }
             }
-
         }
     }
     ?>
 </section>
+<script src="../js/library/jquery-3.3.1.js"></script>
+<script src="../js/library/jquery.redirect.js"></script>
+<script type="application/javascript">
+    $(document).ready(function() {
+        $(".deletePost").click(function(obj){
+            var deleteResponse = confirm("Êtes-vous sûr de vouloir supprimer ce post ?");
+
+            if (deleteResponse) {
+                var idPost = obj.currentTarget.name; // obj.currentTarget is the element who triggers this event click
+                $.redirect('index.php', {'idPost': idPost});
+            }
+        });
+    });
+</script>
 </body>
 </html>
