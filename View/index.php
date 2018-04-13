@@ -10,7 +10,7 @@ $dbFunctions = new DbFunctions();
 $posts = $dbFunctions->GetPosts();
 
 if (isset($_POST['idPost'])) {
-
+    $dbFunctions->DeletePostWithMediaByIdPost($_POST['idPost']);
 }
 ?>
 <!DOCTYPE html>

@@ -168,5 +168,48 @@ class DbFunctions {
             return false;
         }
     }
+
+    public function DeletePostWithMediaByIdPost($idPost) {
+        try {
+            $dbc = pdoController::GetInstance();
+            $dbc->beginTransaction();
+            $mediaArray = self::GetMediaFromIdPost($idPost);
+
+            foreach ($mediaArray as $media) {
+                self::DeleteMediaById($media->GetIdMedia());
+                if(!unlink("../upload/images/" . $media->GetName())) {
+                    throw new Exception("File not found");
+                }
+            }
+            self::DeletePostById($idPost);
+            $dbc->commit();
+        } catch (Exception $e) {
+            printf($e);
+            $dbc->rollBack();
+            return false;
+        }
+    }
+
+    public function DeleteMediaById($idMedia) {
+        try {
+            $dbc = pdoController::GetInstance();
+            $sql = $dbc->prepare("DELETE FROM media WHERE idMedia = :idMedia");
+            $sql->bindParam('idMedia', $idMedia, PDO::PARAM_STR);
+            $sql->execute();
+        } catch (Exception $e) {
+            throw new Exception("Error with the suppression of the media");
+        }
+    }
+
+    public function DeletePostById($idPost) {
+        try {
+            $dbc = pdoController::GetInstance();
+            $sql = $dbc->prepare("DELETE FROM posts WHERE idPost = :idPost");
+            $sql->bindParam('idPost', $idPost, PDO::PARAM_STR);
+            $sql->execute();
+        } catch (Exception $e) {
+            throw new Exception("Error with the suppression of the post");
+        }
+    }
 }
 
